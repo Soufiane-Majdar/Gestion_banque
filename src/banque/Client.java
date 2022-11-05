@@ -1,5 +1,6 @@
 package banque;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -8,7 +9,7 @@ public class Client {
     private String nom;
     private String prenom;
     private String email;
-    private static String[] journalisation = new String[4];
+    private static String[] journalisation = new String[10];
     private static int j=0;
     private Compte[] compte = new Compte[4];
 
@@ -26,8 +27,8 @@ public class Client {
         }
         if(valide) this.email = email;
 
-        journalisation[j]="Client id : "+idClient+" a ete crere ";
-
+        journalisation[j]="Client id : "+idClient+" a ete add le "+ LocalDate.now();
+        j++;
     }
 
     public void setIdClient(int idClient) {
@@ -89,11 +90,11 @@ public class Client {
     @Override
     public String toString() {
 
-        String r="\n<<< Client >>>\n";
-        r+="    Id     : "+idClient+"\n";
-        r+="    Nom    : "+nom+"\n";
-        r+="    Prenom : "+prenom+"\n";
-        r+="    Email  : "+email+"\n";
+        String r="  <<< Client >>>\n";
+        r+="        Id     : "+idClient+"\n";
+        r+="        Nom    : "+nom+"\n";
+        r+="        Prenom : "+prenom+"\n";
+        r+="        Email  : "+email+"\n";
         r+="=============================================\n";
         return r;
     }

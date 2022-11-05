@@ -4,19 +4,7 @@ import java.util.Scanner;
 
 public class Service_Banque {
     public static Banque banque=new Banque();
-    /*public boolean verser(double mt,Compte c) {
-        if(mt>0)
-        {
-            for (int i=0;i<this.getCompte().length;i++)
-            {
-                if(this.getCompte().equals(c)) {
-                    this.getCompte()[i].setSolde(this.getCompte()[i].getSolde()+mt);
-                    return true;
-                }
-            }
-        }
-        return false;
-    }*/
+
     public static boolean verser(double mt,Compte c) {
         for (int i=0;i<banque.nbrCompte;i++) {
             if (banque.getCompte()[i].getIdCompte()==c.getIdCompte()) {
@@ -42,7 +30,7 @@ public class Service_Banque {
         return false;
     }
 
-    public static boolean retirer(double mt,Compte src,Compte des) {
+    public static boolean virement(double mt,Compte src,Compte des) {
         boolean src_exist=false,des_exist=false;
         for (int i=0;i<banque.nbrCompte;i++) {
             if (banque.getCompte()[i].getIdCompte()==src.getIdCompte()) {
@@ -110,7 +98,6 @@ public class Service_Banque {
 
     }
 
-
     public static boolean creeEtAjouterClient(Scanner claver) {
         System.out.println("\n=============================================");
         System.out.println("Cree Et Ajouter Client au Banque");
@@ -152,8 +139,7 @@ public class Service_Banque {
 
     }
 
-    public static Compte chercherCompte(Scanner claver)
-    {
+    public static Compte chercherCompte(Scanner claver) {
         Compte c=new Compte();
         System.out.println("\n=============================================");
         System.out.println("chercher Compte");
@@ -226,6 +212,16 @@ public class Service_Banque {
     }
 
 
+    public static void consulterDetailCompte(Scanner claver)
+    {
+
+    }
+
+    public static void consulterDetailCliente(Scanner claver)
+    {
+
+    }
+
     public static void main(String[] args) {
         Scanner claver=new Scanner(System.in);
         ///////////=>
@@ -263,8 +259,8 @@ public class Service_Banque {
 
         lierCompteAuClient(1,1);
 
-        System.out.println(chercherCompte(claver));
-
+        System.out.println(chercherCompte(claver).toString());
+        System.out.println(chercherClient(claver).toString());
 
 
     }

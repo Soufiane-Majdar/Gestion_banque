@@ -84,8 +84,8 @@ public class Banque {
     @Override
     public String toString() {
 
-        String r="=============================================\n";
-        r+="<<< Banque >>>\n";
+
+        String r="<<< Banque >>>\n";
         r+="    Id    : "+idBanque+"\n";
         r+="    Nom   : "+nomAgence+"\n";
         r+="    Email : "+emailAgence+"\n";

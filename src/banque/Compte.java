@@ -7,8 +7,8 @@ public class Compte {
     private  int idCompte;
     private double solde;
     private LocalDate d_cration;
-    private static String[] journalisation = new String[4];
-    private static int  j=0;
+    private String[] journalisation = new String[4];
+    private int  j=0;
     private Client client;
     private Client clt;
 
@@ -60,15 +60,13 @@ public class Compte {
         this.d_cration = d_cration;
     }
 
-
-    public static String[] getJournalisation() {
+    public String[] getJournalisation() {
         return journalisation;
     }
 
-    public static void setJournalisation(String[] journalisation) {
-        Compte.journalisation = journalisation;
+    public void setJournalisation(String[] journalisation) {
+        this.journalisation = journalisation;
     }
-
 
     public Client getClient() {
         return client;
@@ -80,13 +78,12 @@ public class Compte {
 
     @Override
     public String toString() {
-        String r="=============================================\n";
-        r+="<<< Compte >>>\n";
+        String r="<<< Compte >>>\n";
         r+="    Id              : "+idCompte+"\n";
         r+="    solde           : "+solde+"\n";
         r+="    date de cration : "+d_cration+"\n";
         if(client!=null)
-            r+="    client          : "+client.toString()+"\n";
+            r+="    client          :\n "+client.toString()+"\n";
         r+="=============================================\n";
         return r;
     }
