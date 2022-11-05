@@ -7,6 +7,9 @@ gérer leurs différents comptes.
 
 ## **Modèle de l’application :**
 
+<br />
+<hr/>
+
 ### Écrire une classe Compte définissant un compte bancaire :
 
 **Attributs :** idCompte , solde , date de création , tableau de journalisation et un propriétaire (Client)
@@ -93,6 +96,9 @@ gérer leurs différents comptes.
 <br />public Object [] trierAsc( Object [] objets, Object orderByElement)
 
 <br />public Object [] trierDec( Object [] objets, Object orderByElement)
+
+<br />
+<hr/>
 
 ## **Test  de   l’application   :**
 
