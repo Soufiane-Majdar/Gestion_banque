@@ -5,6 +5,8 @@ gérer leurs différents comptes.
 
 # TD : Gestion de Comptes Bancaire
 
+[**PDF**](https://github.com/Soufiane-Majdar/Gestion_banque/blob/main/TD_Gestion_de_banque.pdf)
+
 ## **Modèle de l’application :**
 
 <hr/>
