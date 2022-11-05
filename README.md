@@ -5,11 +5,8 @@ gérer leurs différents comptes.
 
 # TD : Gestion de Comptes Bancaire
 
-<br /><br />
-
 ## **Modèle de l’application :**
 
-<br />
 <hr/>
 
 ### Écrire une classe Compte définissant un compte bancaire :
@@ -53,11 +50,13 @@ gérer leurs différents comptes.
 ( id de la banque doit être auto-généré ) **Méthodes :** <br />public String toString(),
 
 <br />public boolean equals( Object autreBanque)
+<br />
+
+<hr/>
 <br /><br />
 
 ## **Services  de  l’application  :**
 
-<br />
 <hr/>
 
 ### Écrire une classe Service-Banque implémentant les différents services de l’application : Attribut : Banque
