@@ -53,7 +53,7 @@ gérer leurs différents comptes.
 <br />
 
 <hr/>
-<br /><br />
+<br />
 
 ## **Services  de  l’application  :**
 
