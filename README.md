@@ -41,7 +41,9 @@ gérer leurs différents comptes.
 <br />
 <hr/>
 
-### Écrire une classe Banque lié par relation d’agrégation au deux classes Compte et Client : **Attributs :** idBanque , nomAgence , emailAgence , maxComptes , maxClients et un tableau de comptes , tableau de Clients .
+### Écrire une classe Banque lié par relation d’agrégation au deux classes Compte et Client :
+
+**Attributs :** idBanque , nomAgence , emailAgence , maxComptes , maxClients et un tableau de comptes , tableau de Clients .
 
 **Accès :** getters, setters
 
@@ -59,7 +61,9 @@ gérer leurs différents comptes.
 
 <hr/>
 
-### Écrire une classe Service-Banque implémentant les différents services de l’application : Attribut : Banque
+### Écrire une classe Service-Banque implémentant les différents services de l’application :
+
+**Attribut :** Banque
 
 **Fonctions du Service :**
 
