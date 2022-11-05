@@ -21,6 +21,9 @@ gérer leurs différents comptes.
 <br />public String toString(),<br />
 <br />public boolean equals( Object autreCompte)
 
+<br />
+<hr/>
+
 ### Écrire une classe Client définissant un Client de la banque :
 
 **Attributs :** idClient , nom , prénom , email , tableau de journalisation et un tableau de comptes
@@ -33,6 +36,9 @@ gérer leurs différents comptes.
 
 <br />public boolean equals( Object autreClient)
 
+<br />
+<hr/>
+
 ### Écrire une classe Banque lié par relation d’agrégation au deux classes Compte et Client : **Attributs :** idBanque , nomAgence , emailAgence , maxComptes , maxClients et un tableau de comptes , tableau de Clients .
 
 **Accès :** getters, setters
@@ -44,6 +50,9 @@ gérer leurs différents comptes.
 <br />public boolean equals( Object autreBanque)
 
 ## **Services  de  l’application  :**
+
+<br />
+<hr/>
 
 ### Écrire une classe Service-Banque implémentant les différents services de l’application : Attribut : Banque
 
