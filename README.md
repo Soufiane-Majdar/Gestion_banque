@@ -5,6 +5,8 @@ gérer leurs différents comptes.
 
 # TD : Gestion de Comptes Bancaire
 
+<br /><br />
+
 ## **Modèle de l’application :**
 
 <br />
@@ -51,6 +53,7 @@ gérer leurs différents comptes.
 ( id de la banque doit être auto-généré ) **Méthodes :** <br />public String toString(),
 
 <br />public boolean equals( Object autreBanque)
+<br /><br />
 
 ## **Services  de  l’application  :**
 
