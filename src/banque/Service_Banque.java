@@ -160,8 +160,7 @@ public class Service_Banque {
         return c;
     }
 
-    public static Client chercherClient(Scanner claver)
-    {
+    public static Client chercherClient(Scanner claver) {
         Client c=new Client();
         System.out.println("\n=============================================");
         System.out.println("chercher Client");
@@ -182,8 +181,7 @@ public class Service_Banque {
         return c;
     }
 
-    public static boolean lierCompteAuClient(int idClient , int idCompte)
-    {
+    public static boolean lierCompteAuClient(int idClient , int idCompte) {
         System.out.println("\n=============================================");
         System.out.println("lier Compte "+idCompte+" Au Client"+idClient);
         int clt_exist=5,cmp_exist=5;
@@ -212,13 +210,11 @@ public class Service_Banque {
     }
 
 
-    public static void consulterDetailCompte(Scanner claver)
-    {
+    public static void consulterDetailCompte(Scanner claver) {
 
     }
 
-    public static void consulterDetailCliente(Scanner claver)
-    {
+    public static void consulterDetailCliente(Scanner claver) {
 
     }
 
