@@ -11,37 +11,37 @@ gérer leurs différents comptes.
 
 **Attributs :** idCompte , solde , date de création , tableau de journalisation et un propriétaire (Client)
 
-Accès : getters, setters
+**Accès :** getters, setters
 
 ( Solde initiale doit être positif ) ( id doit être auto-généré )
 
 ( la journalisation de la création du compte est stocké dès l’initialisation du compte, ainsi que le dépôt du solde initiale si c’est pas 0dh )
 
 **Méthodes :**
-public String toString(),<br />
-public boolean equals( Object autreCompte)
+<br />public String toString(),<br />
+<br />public boolean equals( Object autreCompte)
 
 ### Écrire une classe Client définissant un Client de la banque :
 
 **Attributs :** idClient , nom , prénom , email , tableau de journalisation et un tableau de comptes
 
-Accès : getters, setters
+**Accès :** getters, setters
 
 ( email doit être conforme au format Email ) ( id doit être auto-généré )
 
-**Méthodes :** public String toString(),
+**Méthodes :** <br />public String toString(),
 
-public boolean equals( Object autreClient)
+<br />public boolean equals( Object autreClient)
 
 ### Écrire une classe Banque lié par relation d’agrégation au deux classes Compte et Client : **Attributs :** idBanque , nomAgence , emailAgence , maxComptes , maxClients et un tableau de comptes , tableau de Clients .
 
-Accès : getters, setters
+**Accès :** getters, setters
 
 ( nombre max de Clients et Comptes doit être fixé dès la création de l’agence bancaire )
 
-( id de la banque doit être auto-généré ) **Méthodes :** public String toString(),
+( id de la banque doit être auto-généré ) **Méthodes :** <br />public String toString(),
 
-public boolean equals( Object autreBanque)
+<br />public boolean equals( Object autreBanque)
 
 ## **Services  de  l’application  :**
 
@@ -49,25 +49,25 @@ public boolean equals( Object autreBanque)
 
 **Fonctions du Service :**
 
-#### Service transactionnelle :: ( chaque service finit par une journalisation ) public boolean verser( double montant, Compte c)
+#### Service transactionnelle :: ( chaque service finit par une journalisation ) <br />public boolean verser( double montant, Compte c)
 
-public boolean retirer( double montant, Compte c)
+<br />public boolean retirer( double montant, Compte c)
 
-public boolean virement( double montant, Compte src, Compte des)
+<br />public boolean virement( double montant, Compte src, Compte des)
 
 #### Service CRUD :: (création, consultation, modification et suppression)
 
-public boolean créerEtAjouterCompte( Scanner clavier)
+<br />public boolean créerEtAjouterCompte( Scanner clavier)
 
-public boolean créerEtAjouterNouveauClient( Scanner clavier) public boolean lierCompteAuClient ( int idClient, int idCompte) public Compte chercherlCompte( Scanner clavier)
+<br />public boolean créerEtAjouterNouveauClient( Scanner clavier) <br />public boolean lierCompteAuClient ( int idClient, int idCompte) <br />public Compte chercherlCompte( Scanner clavier)
 
-public Compte chercherlClient( Scanner clavier) public void consulterDétailCompte( Scanner clavier) public void consulterDétailClient( Scanner clavier) public boolean modifierCompte( Scanner clavier) public boolean modifierClient( Scanner clavier) public boolean supprimerCompte( Scanner clavier) public boolean supprimerClient( Scanner clavier)
+<br />public Compte chercherlClient( Scanner clavier) <br />public void consulterDétailCompte( Scanner clavier) <br />public void consulterDétailClient( Scanner clavier) <br />public boolean modifierCompte( Scanner clavier) <br />public boolean modifierClient( Scanner clavier) <br />public boolean supprimerCompte( Scanner clavier) <br />public boolean supprimerClient( Scanner clavier)
 
 #### Service ++ ::
 
-public void consulterInformationsBanque( Scanner clavier)
+<br />public void consulterInformationsBanque( Scanner clavier)
 
-public void listerClientsDeLaBanque( Scanner clavier)
+<br />public void listerClientsDeLaBanque( Scanner clavier)
 
 è Ordonné par leur date d’ajout
 
@@ -75,15 +75,15 @@ public void listerClientsDeLaBanque( Scanner clavier)
 
 è Ordonné alphabétiquement (selon leur nom et prénom)
 
-public Client [] trierClientsParDate ( Scanner clavier) public Client [] trierClientsParSolde ( Scanner clavier) public Client [] trierClientsParNom ( Scanner clavier)
+<br />public Client [] trierClientsParDate ( Scanner clavier) <br />public Client [] trierClientsParSolde ( Scanner clavier) <br />public Client [] trierClientsParNom ( Scanner clavier)
 
 #### Service Utilitaire ::
 
-public void afficherMenuServiceBanque()
+<br />public void afficherMenuServiceBanque()
 
-public Object [] trierAsc( Object [] objets, Object orderByElement)
+<br />public Object [] trierAsc( Object [] objets, Object orderByElement)
 
-public Object [] trierDec( Object [] objets, Object orderByElement)
+<br />public Object [] trierDec( Object [] objets, Object orderByElement)
 
 ## **Test  de   l’application   :**
 
