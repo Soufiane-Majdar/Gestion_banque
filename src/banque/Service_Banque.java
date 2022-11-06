@@ -3,8 +3,10 @@ package banque;
 import java.util.Scanner;
 
 public class Service_Banque {
-    public static Banque banque=new Banque();
+    public static Banque banque=new Banque("Mj Agence","service@mjagence.ma");
 
+
+    // ** Service transactionnelle **
     public static boolean verser(double mt,Compte c) {
         for (int i=0;i<banque.nbrCompte;i++) {
             if (banque.getCompte()[i].getIdCompte()==c.getIdCompte()) {
@@ -17,19 +19,18 @@ public class Service_Banque {
 
         return false;
     }
-
     public static boolean retirer(double mt,Compte c) {
         for (int i=0;i<banque.nbrCompte;i++) {
             if (banque.getCompte()[i].getIdCompte()==c.getIdCompte()) {
                 if (c.getSolde() - mt >= 0) {
                     c.setSolde(c.getSolde() - mt);
+                    System.out.println("Retirer avec succès");
                     return true;
                 }
             }
         }
         return false;
     }
-
     public static boolean virement(double mt,Compte src,Compte des) {
         boolean src_exist=false,des_exist=false;
         for (int i=0;i<banque.nbrCompte;i++) {
@@ -46,27 +47,30 @@ public class Service_Banque {
             {
                 des.setSolde(des.getSolde()+mt);
                 src.setSolde(src.getSolde()-mt);
+                System.out.println("Virement fait avec succès");
                 return true;
             }
         }
         else
         {
-            System.out.println("Compte source or destinaton not exist!");
+            System.out.println("Compte source ou Compte destination n'existent pas!");
         }
 
 
         return false;
     }
 
-    public static boolean creeEtAjouterCompte(Scanner claver) {
+
+    // ** Service CRUD **
+    public static boolean creeEtAjouterCompte(Scanner clavier) {
         System.out.println("\n=============================================");
         System.out.println("Cree Et Ajouter Compte au Banque");
         System.out.println("ID     : ");
-        int id =claver.nextInt();
+        int id =clavier.nextInt();
         System.out.println("solde  : ");
-        double solde=claver.nextDouble();
+        double solde=clavier.nextDouble();
         //System.out.println("client : ");
-        //String client=claver.next();
+        //String client=clavier.next();
         Compte c=new Compte(id,solde);
 
         boolean not_exist=true;
@@ -80,35 +84,36 @@ public class Service_Banque {
             if(banque.nbrCompte<banque.getMaxCompte()) {
                 banque.getCompte()[banque.nbrCompte] = c;
                 banque.nbrCompte++;
-                System.out.println("\nAcount created succesfuly!");
+                System.out.println("\nCompte est créé avec succès!");
+                System.out.println("=============================================\n");
                 //boolean b=verser(233,c);
                 return true;
             }
             else
             {
-                System.out.println("you have reched the max number of comptes!");
+                System.out.println("vous avez atteint le nombre maximum de comptes!");
+                System.out.println("=============================================\n");
                 return false;
             }
         }
         else
         {
-            System.out.println("Compte alredy exist!");
+            System.out.println("Compte existe déjà!");
             return false;
         }
 
     }
-
-    public static boolean creeEtAjouterClient(Scanner claver) {
+    public static boolean creeEtAjouterClient(Scanner clavier) {
         System.out.println("\n=============================================");
         System.out.println("Cree Et Ajouter Client au Banque");
         System.out.println("ID     : ");
-        int id =claver.nextInt();
+        int id =clavier.nextInt();
         System.out.println("nom    : ");
-        String nom=claver.next();
+        String nom=clavier.next();
         System.out.println("prenom : ");
-        String prenom=claver.next();
+        String prenom=clavier.next();
         System.out.println("email  : ");
-        String email=claver.next();
+        String email=clavier.next();
         Client c=new Client(id,nom,prenom,email);
 
         boolean not_exist=true;
@@ -122,29 +127,30 @@ public class Service_Banque {
             if(banque.nbrCompte<banque.getMaxCompte()) {
                 banque.getClient()[banque.nbrClient] = c;
                 banque.nbrClient++;
-                System.out.println("\nClient created succesfuly!");
+                System.out.println("\nClient créé avec succès!");
+                System.out.println("=============================================\n");
                 return true;
             }
             else
             {
-                System.out.println("you have reched the max number of Client!");
+                System.out.println("vous avez atteint le nombre maximum de Client");
+                System.out.println("=============================================\n");
                 return false;
             }
         }
         else
         {
-            System.out.println("Client alredy exist!");
+            System.out.println("Client existe déjà!");
             return false;
         }
 
     }
-
-    public static Compte chercherCompte(Scanner claver) {
+    public static Compte chercherCompte(Scanner clavier) {
         Compte c=new Compte();
         System.out.println("\n=============================================");
         System.out.println("chercher Compte");
         System.out.println("ID : ");
-        int id =claver.nextInt();
+        int id =clavier.nextInt();
 
         boolean not_exist=true;
         for (int i=0;i<banque.nbrCompte;i++) {
@@ -157,15 +163,15 @@ public class Service_Banque {
         }
         if(not_exist)
             System.out.println("Compte dos not exist!");
+        System.out.println("=============================================\n");
         return c;
     }
-
-    public static Client chercherClient(Scanner claver) {
+    public static Client chercherClient(Scanner clavier) {
         Client c=new Client();
         System.out.println("\n=============================================");
         System.out.println("chercher Client");
         System.out.println("ID : ");
-        int id =claver.nextInt();
+        int id =clavier.nextInt();
 
         boolean not_exist=true;
         for (int i=0;i<banque.nbrClient;i++) {
@@ -177,10 +183,10 @@ public class Service_Banque {
             }
         }
         if(not_exist)
-            System.out.println("Client dos not exist!");
+            System.out.println("Client n'existe pas!");
+            System.out.println("=============================================\n");
         return c;
     }
-
     public static boolean lierCompteAuClient(int idClient , int idCompte) {
         System.out.println("\n=============================================");
         System.out.println("lier Compte "+idCompte+" Au Client "+idClient);
@@ -198,33 +204,31 @@ public class Service_Banque {
         if(clt_exist!=5 && cmp_exist!=5)
         {
             banque.getCompte()[cmp_exist].setClient(banque.getClient()[clt_exist]);
-            System.out.println("\n le Compte "+idCompte+" a ete lie au Client "+idClient);
+            System.out.println("\n le Compte "+idCompte+" est lie au Client "+idClient);
+            System.out.println("=============================================\n");
             return true;
         }
         else
         {
-            System.out.println("\n le Compte "+idCompte+" ou le Client "+idClient+" n'exist pas dant la banque.");
+            System.out.println("\n le Compte "+idCompte+" ou le Client "+idClient+" n'existe pas dans la banque.");
+            System.out.println("=============================================\n");
             return false;
         }
 
     }
-
-
-    public static void consulterDetailCompte(Scanner claver) {
-
-    }
-
-    public static void consulterDetailCliente(Scanner claver) {
+    // not done
+    public static void consulterDetailCompte(Scanner clavier) {
 
     }
+    // not done
+    public static void consulterDetailCliente(Scanner clavier) {
 
-
-
-    public static boolean modifierClient(Scanner claver) {
+    }
+    public static boolean modifierClient(Scanner clavier) {
         System.out.println("\n=============================================");
         System.out.println("Modifier Client");
         System.out.println("ID     : ");
-        int id =claver.nextInt();
+        int id =clavier.nextInt();
 
 
         int position=10;
@@ -236,31 +240,32 @@ public class Service_Banque {
         if(position!=10)
         {
                 System.out.println("nom    : ");
-                String nom=claver.next();
+                String nom=clavier.next();
                 System.out.println("prenom : ");
-                String prenom=claver.next();
+                String prenom=clavier.next();
                 System.out.println("email  : ");
-                String email=claver.next();
+                String email=clavier.next();
 
                 banque.getClient()[position].setNom(nom);
                 banque.getClient()[position].setPrenom(prenom);
                 banque.getClient()[position].setEmail(email);
-                System.out.println("\nClient updated succesfuly!");
+                System.out.println("\nClient est modifié avec succès!");
+            System.out.println("=============================================\n");
                 return true;
         }
         else
         {
-            System.out.println("\nClient dos not exist!");
+            System.out.println("\nClient n'existe pas!");
+            System.out.println("=============================================\n");
             return false;
         }
 
     }
-
-    public static boolean modifierCompte(Scanner claver) {
+    public static boolean modifierCompte(Scanner clavier) {
         System.out.println("\n=============================================");
         System.out.println("Modifier Compte");
         System.out.println("ID     : ");
-        int id =claver.nextInt();
+        int id =clavier.nextInt();
 
 
         int position=10;
@@ -272,25 +277,26 @@ public class Service_Banque {
         if(position!=10)
         {
             System.out.println("solde    : ");
-            double solde=claver.nextDouble();
+            double solde=clavier.nextDouble();
 
             banque.getCompte()[position].setSolde(solde);
-            System.out.println("\nCompte updated succesfuly!");
+            System.out.println("\nCompte est modifié avec succès!");
+            System.out.println("=============================================\n");
             return true;
         }
         else
         {
-            System.out.println("\nCompte dos not exist!");
+            System.out.println("\nCompte n'existe pas!");
+            System.out.println("=============================================\n");
             return false;
         }
 
     }
-
-    public static boolean suprimerCompte(Scanner claver) {
+    public static boolean suprimerCompte(Scanner clavier) {
         System.out.println("\n=============================================");
         System.out.println("Suprimer Compte");
         System.out.println("ID     : ");
-        int id =claver.nextInt();
+        int id =clavier.nextInt();
 
 
         int position=10;
@@ -311,19 +317,94 @@ public class Service_Banque {
                 }
             }
             banque.nbrCompte--;
-            System.out.println("\nCompte deleted succesfuly!");
+            System.out.println("\nCompte est supprimé avec succès!");
+            System.out.println("=============================================\n");
             return true;
         }
         else
         {
-            System.out.println("\nCompte dos not exist!");
+            System.out.println("\nCompte n'existe pas!");
+            System.out.println("=============================================\n");
+            return false;
+        }
+
+    }
+    public static boolean suprimerClient(Scanner clavier) {
+        System.out.println("\n=============================================");
+        System.out.println("Suprimer Client");
+        System.out.println("ID     : ");
+        int id =clavier.nextInt();
+
+
+        int position=10;
+        for (int i=0;i<banque.nbrClient;i++) {
+            if ( banque.getClient()[i].getIdClient()==id) {
+                position=i;
+            }
+        }
+        if(position!=10)
+        {
+            for (int i=position;i<banque.nbrClient;i++) {
+                if(i+1<banque.nbrClient) {
+                    banque.getClient()[i].setIdClient(banque.getClient()[i + 1].getIdClient());
+                    banque.getClient()[i].setNom(banque.getClient()[i + 1].getNom());
+                    banque.getClient()[i].setPrenom(banque.getClient()[i + 1].getPrenom());
+                    banque.getClient()[i].setEmail(banque.getClient()[i + 1].getEmail());
+                    banque.getClient()[i].setJournalisation(banque.getClient()[i + 1].getJournalisation());
+                }
+            }
+            banque.nbrClient--;
+            System.out.println("\nClient est supprimé avec succès!");
+            System.out.println("=============================================\n");
+            return true;
+        }
+        else
+        {
+            System.out.println("\nClient n'existe pas!");
+            System.out.println("=============================================\n");
             return false;
         }
 
     }
 
+    // ** Service ++ **
+    public static void consulterInformationsBanque( ){
+        System.out.println("\n=============================================");
+        System.out.println("Consulter Informations Banque\n");
+        System.out.println(banque.toString());
+    }
+
+    public static void listerClientsDeLaBanque(Scanner clavier){
+        System.out.println("\n=============================================");
+        System.out.println("lister Clients De La Banque");
+        System.out.println("    1 : trier Clients Par Date");
+        System.out.println("    2 : trier Clients Par Solde");
+        System.out.println("    3 : trier Clients Par Nom");
+        int m = clavier.nextInt();
+        if (m==1)
+            trierClientsParDate (clavier);
+        else if (m==2)
+            trierClientsParSolde(clavier);
+        else if(m==3)
+            trierClientsParNom(clavier);
+        else
+            listerClientsDeLaBanque(clavier);
+    }
+    public static Client[] trierClientsParDate ( Scanner clavier){
+        Client[] c=new  Client[banque.nbrClient];
+        return c;
+    }
+    public static Client[] trierClientsParSolde ( Scanner clavier){
+        Client[] c=new  Client[4];
+        return c;
+    }
+    public static Client[] trierClientsParNom ( Scanner clavier){
+        Client[] c=new  Client[4];
+        return c;
+    }
+
     public static void main(String[] args) {
-        Scanner claver=new Scanner(System.in);
+        Scanner clavier=new Scanner(System.in);
         ///////////=>
 
         //Compte C1=new Compte(1,3000);
@@ -332,11 +413,10 @@ public class Service_Banque {
         //Compte C2=new Compte(400000,"Soufiane");
 
         //banque.addCompte(C1);
-        creeEtAjouterCompte(claver);
-        creeEtAjouterCompte(claver);
-        //creeEtAjouterCompte(claver);
-        creeEtAjouterClient(claver);
-        //creeEtAjouterClient(claver);
+        creeEtAjouterCompte(clavier);
+        creeEtAjouterCompte(clavier);
+        //creeEtAjouterClient(clavier);
+        //creeEtAjouterClient(clavier);
 
         //boolean v=verser(200,C1);
         //System.out.println(v);
@@ -347,7 +427,7 @@ public class Service_Banque {
 
 
 
-        //chercherClient(claver);
+        //chercherClient(clavier);
 
         lierCompteAuClient(1,2);
 
@@ -363,12 +443,13 @@ public class Service_Banque {
             System.out.println(banque.getClient()[i].toString());;
         }
 
-        //modifierClient(claver);
-        //modifierCompte(claver);
-        suprimerCompte(claver);
-
-        //System.out.println(chercherCompte(claver).toString());
-        //System.out.println(chercherClient(claver).toString());
+        //modifierClient(clavier);
+        //modifierCompte(clavier);
+        //suprimerCompte(clavier);
+        suprimerClient(clavier);
+        //System.out.println(chercherCompte(clavier).toString());
+        //System.out.println(chercherClient(clavier).toString());
+        consulterInformationsBanque();
 
         for(int i=0;i<banque.nbrCompte;i++)
         {
