@@ -7,16 +7,12 @@ public class Banque {
     private String nomAgence,emailAgence;
     private final int  maxCompte=4;
 
-
     private final int  maxClient=4;
-
-
-
 
     private Compte[] compte = new Compte[4];
     public int nbrCompte=0;
     private Client[] client = new Client[4];
-    public static int nbrClient=0;
+    public int nbrClient=0;
 
     public Banque(){}
 

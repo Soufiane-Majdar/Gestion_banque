@@ -83,7 +83,7 @@ public class Compte {
         r+="    solde           : "+solde+"\n";
         r+="    date de cration : "+d_cration+"\n";
         if(client!=null)
-            r+="    client          :\n "+client.toString()+"\n";
+            r+="    |->"+client.toString()+"\n";
         r+="=============================================\n";
         return r;
     }
