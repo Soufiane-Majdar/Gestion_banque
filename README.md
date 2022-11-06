@@ -114,27 +114,32 @@ gérer leurs différents comptes.
 
 # images:
 
-## menu
+## Menu
 <p align="center">
   <img width="460"  src="img/menu.png">
 </p>
 
-## cree client
+## Cree Client
 <p align="center">
   <img width="460"  src="img/creeclient.png">
 </p>
 
-## cree Compte
+## Cree Compte
 <p align="center">
   <img width="460"  src="img/creeCompte.png">
 </p>
 
-## chercher
+## Chercher
 <p align="center">
   <img width="460"  src="img/chercher.png">
 </p>
 
-## lier
+## Lier
 <p align="center">
   <img width="460"  src="img/lier.png">
+</p>
+
+## Trier
+<p align="center">
+  <img width="460"  src="img/Trier.png">
 </p>
