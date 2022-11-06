@@ -10,7 +10,7 @@ public class Compte {
     private String[] journalisation = new String[4];
     private int  j=0;
     private Client client;
-    private Client clt;
+
 
     public Compte(){}
     public Compte(int idCompte,double solde, Client client) {

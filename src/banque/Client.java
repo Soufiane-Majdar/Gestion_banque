@@ -11,7 +11,8 @@ public class Client {
     private String email;
     private static String[] journalisation = new String[10];
     private static int j=0;
-    private Compte[] compte = new Compte[4];
+    public Compte[] compte = new Compte[4];
+    public int nbrcompte=0;
 
    public Client(){}
     public Client(int idClient,String nom, String prenom, String email) {

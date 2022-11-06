@@ -3,7 +3,7 @@ package banque;
 import java.util.Scanner;
 
 public class Service_Banque {
-    public static Banque banque=new Banque("Mj Agence","service@mjagence.ma");
+    public static Banque banque=new Banque("Majdar Agence","service@mjagence.ma");
 
 
     // ** Service transactionnelle **
@@ -204,6 +204,8 @@ public class Service_Banque {
         if(clt_exist!=5 && cmp_exist!=5)
         {
             banque.getCompte()[cmp_exist].setClient(banque.getClient()[clt_exist]);
+            banque.getClient()[clt_exist].compte[banque.getClient()[clt_exist].nbrcompte]=banque.getCompte()[cmp_exist];
+            banque.getClient()[clt_exist].nbrcompte++;
             System.out.println("\n le Compte "+idCompte+" est lie au Client "+idClient);
             System.out.println("=============================================\n");
             return true;
@@ -391,7 +393,7 @@ public class Service_Banque {
             listerClientsDeLaBanque(clavier);
     }
     public static Client[] trierClientsParDate ( Scanner clavier){
-        Client[] c=new  Client[banque.nbrClient];
+        Client[] c=new  Client[4];
         return c;
     }
     public static Client[] trierClientsParSolde ( Scanner clavier){
@@ -403,9 +405,160 @@ public class Service_Banque {
         return c;
     }
 
-    public static void main(String[] args) {
+
+
+    public static void afficherMenuServiceBanque()
+    {
         Scanner clavier=new Scanner(System.in);
+        System.out.println("\n=============================================");
+        System.out.println("Menu Service Banque \n");
+        System.out.println("    0  : Quitter\n");
+        System.out.println("|-> Service Transactionnelle ::");
+        System.out.println("    1  : verser");
+        System.out.println("    2  : retirer");
+        System.out.println("    3  : virement\n");
+        System.out.println("|-> Service CRUD ::");
+        System.out.println("    4  : créer Et Ajouter Compte");
+        System.out.println("    5  : créer Et Ajouter Client");
+        System.out.println("    6  : lier Compte Au Client");
+        System.out.println("    7  : chercher Compte");
+        System.out.println("    8  : chercher Client");
+        System.out.println("    9  : consulter Détail Compte");
+        System.out.println("    10  : consulter Détail Client");
+        System.out.println("    11 : modifier Compte");
+        System.out.println("    12 : modifier Client");
+        System.out.println("    13 : supprimer Compte");
+        System.out.println("    14 : supprimer Client\n");
+        System.out.println("|-> Service ++ ::");
+        System.out.println("    15 : consulter Informations Banque");
+        System.out.println("    16 : lister Clients De La Banque\n");
+        System.out.println("|-> Service Utilitaire ::");
+        System.out.println("    17 : afficher Menu Service Banquee");
+        System.out.println("    18 : trier Asc");
+        System.out.println("    19 : trier Dec\n");
+
+        System.out.println("=============================================");
+        System.out.println("Votre choix : ");
+        int choix = clavier.nextInt();
+
+        switch (choix) {
+            case 0:
+                System.out.println("Au revoir!");
+                break;
+            case 1:
+                System.out.println("verser");
+                System.out.println("Montant : ");
+                double mt =clavier.nextDouble();
+                Compte c=chercherCompte(clavier);
+                if(c!=null)
+                    verser(mt,c);
+                else
+                    System.out.println("Compte n'existe pas!");
+                afficherMenuServiceBanque();
+                break;
+            case 2:
+                System.out.println("retirer");
+                System.out.println("Montant : ");
+                double mt1 =clavier.nextDouble();
+                Compte c1=chercherCompte(clavier);
+                if(c1!=null)
+                    retirer(mt1,c1);
+                else
+                    System.out.println("Compte n'existe pas!");
+                afficherMenuServiceBanque();
+                break;
+            case 3:
+                System.out.println("virement");
+                System.out.println("Montant : ");
+                double mt2 =clavier.nextDouble();
+                Compte c2=chercherCompte(clavier);
+                Compte c3=chercherCompte(clavier);
+                if(c2!=null && c3!=null)
+                    virement(mt2,c2,c3);
+                else
+                    System.out.println("Compte n'existe pas!");
+                afficherMenuServiceBanque();
+                break;
+            case 4:
+                creeEtAjouterCompte(clavier);
+                afficherMenuServiceBanque();
+                break;
+            case 5:
+                creeEtAjouterClient(clavier);
+                afficherMenuServiceBanque();
+                break;
+            case 6:
+                // get id of client and compte
+                System.out.println("Lier Compte Au Client");
+                System.out.println("Id Client : ");
+                int idClient =clavier.nextInt();
+                System.out.println("Id Compte : ");
+                int idCompte =clavier.nextInt();
+                lierCompteAuClient(idClient, idCompte);
+                afficherMenuServiceBanque();
+                break;
+            case 7:
+                System.out.println(chercherCompte(clavier).toString());
+                afficherMenuServiceBanque();
+                break;
+            case 8:
+                System.out.println(chercherClient(clavier).toString());
+                afficherMenuServiceBanque();
+                break;
+            case 9:
+                consulterDetailCompte(clavier);
+                afficherMenuServiceBanque();
+                break;
+            case 10:
+                consulterDetailCliente(clavier);
+                afficherMenuServiceBanque();
+                break;
+            case 11:
+                modifierCompte(clavier);
+                afficherMenuServiceBanque();
+                break;
+            case 12:
+                modifierClient(clavier);
+                afficherMenuServiceBanque();
+                break;
+            case 13:
+                suprimerCompte(clavier);
+                afficherMenuServiceBanque();
+                break;
+            case 14:
+                suprimerClient(clavier);
+                afficherMenuServiceBanque();
+                break;
+            case 15:
+                consulterInformationsBanque();
+                afficherMenuServiceBanque();
+                break;
+            case 16:
+                listerClientsDeLaBanque(clavier);
+                afficherMenuServiceBanque();
+                break;
+            case 17:
+                afficherMenuServiceBanque();
+                break;
+            case 18:
+                //trierAsc(clavier);
+                afficherMenuServiceBanque();
+                break;
+            case 19:
+                //trierDec(clavier);
+                afficherMenuServiceBanque();
+                break;
+            default:
+                System.out.println("Choix invalide!");
+                afficherMenuServiceBanque();
+                break; 
+        }
+    }
+    public static void main(String[] args) {
+        //Scanner clavier=new Scanner(System.in);
         ///////////=>
+
+        afficherMenuServiceBanque();
 
         //Compte C1=new Compte(1,3000);
 
@@ -413,8 +566,8 @@ public class Service_Banque {
         //Compte C2=new Compte(400000,"Soufiane");
 
         //banque.addCompte(C1);
-        creeEtAjouterCompte(clavier);
-        creeEtAjouterCompte(clavier);
+        //creeEtAjouterCompte(clavier);
+        //creeEtAjouterCompte(clavier);
         //creeEtAjouterClient(clavier);
         //creeEtAjouterClient(clavier);
 
@@ -429,36 +582,36 @@ public class Service_Banque {
 
         //chercherClient(clavier);
 
-        lierCompteAuClient(1,2);
+        //lierCompteAuClient(1,2);
 
 
 
-        for(int i=0;i<banque.nbrCompte;i++)
-        {
-            System.out.println(banque.getCompte()[i].toString());;
-        }
+        // for(int i=0;i<banque.nbrCompte;i++)
+        // {
+        //     System.out.println(banque.getCompte()[i].toString());;
+        // }
 
-        for(int i=0;i<banque.nbrClient;i++)
-        {
-            System.out.println(banque.getClient()[i].toString());;
-        }
+        // for(int i=0;i<banque.nbrClient;i++)
+        // {
+        //     System.out.println(banque.getClient()[i].toString());;
+        // }
 
         //modifierClient(clavier);
         //modifierCompte(clavier);
         //suprimerCompte(clavier);
-        suprimerClient(clavier);
+        //suprimerClient(clavier);
         //System.out.println(chercherCompte(clavier).toString());
         //System.out.println(chercherClient(clavier).toString());
-        consulterInformationsBanque();
+        //consulterInformationsBanque();
 
-        for(int i=0;i<banque.nbrCompte;i++)
-        {
-            System.out.println(banque.getCompte()[i].toString());;
-        }
+        // for(int i=0;i<banque.nbrCompte;i++)
+        // {
+        //     System.out.println(banque.getCompte()[i].toString());;
+        // }
 
-        for(int i=0;i<banque.nbrClient;i++)
-        {
-            System.out.println(banque.getClient()[i].toString());;
-        }
+        // for(int i=0;i<banque.nbrClient;i++)
+        // {
+        //     System.out.println(banque.getClient()[i].toString());;
+        // }
     }
 }
