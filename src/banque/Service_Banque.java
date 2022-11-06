@@ -220,10 +220,65 @@ public class Service_Banque {
     }
     // not done
     public static void consulterDetailCompte(Scanner clavier) {
+        System.out.println("\n=============================================");
+        System.out.println("Consulter Detail Compte");
+        // get id 
+        System.out.println("ID     : ");
+        int id =clavier.nextInt();
+        // get compte
+        Compte c=new Compte();
+        boolean not_exist=true;
+        for (int i=0;i<banque.nbrCompte;i++) {
+            if ( banque.getCompte()[i].getIdCompte()==id) {
+                c=banque.getCompte()[i];
+                //System.out.println(c.toString());
+                not_exist=false;
+            }
+        }
+        if(not_exist)
+            System.out.println("Compte dos not exist!");
+        else
+        {
+            System.out.println("=============================================");
+            System.out.println("Detail Compte");
+            // lopp to print journalisation
+            for (int i=0;i<c.j;i++) {
+                System.out.println(c.getJournalisation()[i].toString());
+            }
+            System.out.println("=============================================\n");
+        }
 
     }
     // not done
     public static void consulterDetailCliente(Scanner clavier) {
+        System.out.println("\n=============================================");
+        System.out.println("Consulter Detail Cliente");
+        // get id 
+        System.out.println("ID     : ");
+        int id =clavier.nextInt();
+        // get compte
+        Client c=new Client();
+        boolean not_exist=true;
+        for (int i=0;i<banque.nbrClient;i++) {
+            if ( banque.getClient()[i].getIdClient()==id) {
+                c=banque.getClient()[i];
+                //System.out.println(c.toString());
+                not_exist=false;
+            }
+        }
+        if(not_exist)
+            System.out.println("Client dos not exist!");
+        else
+        {
+            System.out.println("=============================================");
+            System.out.println("Detail Client");
+            // lopp to print journalisation
+            for (int i=0;i<c.j;i++) {
+                System.out.println(c.getJournalisation()[i].toString());
+            }
+            System.out.println("=============================================\n");
+        }
+
 
     }
     public static boolean modifierClient(Scanner clavier) {
@@ -384,31 +439,127 @@ public class Service_Banque {
         System.out.println("    3 : trier Clients Par Nom");
         int m = clavier.nextInt();
         if (m==1)
+        {
             trierClientsParDate (clavier);
+            for (int i=0;i<banque.nbrClient;i++) {
+                System.out.println(banque.getClient()[i].toString());
+            }
+        }
         else if (m==2)
+        {
             trierClientsParSolde(clavier);
+            for (int i=0;i<banque.nbrClient;i++) {
+                System.out.println(banque.getClient()[i].toString());
+            }
+        }
+            
         else if(m==3)
+        {
             trierClientsParNom(clavier);
+            for (int i=0;i<banque.nbrClient;i++) {
+                System.out.println(banque.getClient()[i].toString());
+            }
+        }
         else
             listerClientsDeLaBanque(clavier);
     }
+
     public static Client[] trierClientsParDate ( Scanner clavier){
-        Client[] c=new  Client[4];
-        return c;
+        System.out.println("\n=============================================");
+        System.out.println("Trier Clients Par Date");
+        System.out.println("    1 : croissant");
+        System.out.println("    2 : décroissant");
+        int m = clavier.nextInt();
+        if (m==1)
+        {
+            for (int i=0;i<banque.nbrClient;i++) {
+                for (int j=i+1;j<banque.nbrClient;j++) {
+                    if (banque.getClient()[i].getD_cration().compareTo(banque.getClient()[j].getD_cration())>0) {
+                        Client temp=banque.getClient()[i];
+                        banque.getClient()[i]=banque.getClient()[j];
+                        banque.getClient()[j]=temp;
+                    }
+                }
+            }
+        }
+        else if (m==2)
+        {
+            for (int i=0;i<banque.nbrClient;i++) {
+                for (int j=i+1;j<banque.nbrClient;j++) {
+                    if (banque.getClient()[i].getD_cration().compareTo(banque.getClient()[j].getD_cration())<0) {
+                        Client temp=banque.getClient()[i];
+                        banque.getClient()[i]=banque.getClient()[j];
+                        banque.getClient()[j]=temp;
+                    }
+                }
+            }
+        }
+        else
+            trierClientsParDate(clavier);
+        return banque.getClient();
     }
+    
     public static Client[] trierClientsParSolde ( Scanner clavier){
-        Client[] c=new  Client[4];
-        return c;
+        System.out.println("\n=============================================");
+        System.out.println("Trier Clients Par Solde");
+        System.out.println("    1 : croissant");
+        System.out.println("    2 : décroissant");
+        int m = clavier.nextInt();
+        // getsolde from compte of the client in banque
+        if (m==1)
+        {
+            return banque.getClient();
+        }
+        else if (m==2)
+        {
+            return banque.getClient();
+        }
+        else
+            trierClientsParSolde(clavier);
+
+        return banque.getClient();
     }
     public static Client[] trierClientsParNom ( Scanner clavier){
-        Client[] c=new  Client[4];
-        return c;
+
+        //nom
+        System.out.println("\n=============================================");
+        System.out.println("Trier Clients Par Nom");
+        System.out.println("    1 : croissant");
+        System.out.println("    2 : décroissant");
+        int m = clavier.nextInt();
+        if (m==1)
+        {
+            for (int i=0;i<banque.nbrClient;i++) {
+                for (int j=i+1;j<banque.nbrClient;j++) {
+                    if (banque.getClient()[i].getNom().compareTo(banque.getClient()[j].getNom())>0) {
+                        Client temp=banque.getClient()[i];
+                        banque.getClient()[i]=banque.getClient()[j];
+                        banque.getClient()[j]=temp;
+                    }
+                }
+            }
+        }
+        else if (m==2)
+        {
+            for (int i=0;i<banque.nbrClient;i++) {
+                for (int j=i+1;j<banque.nbrClient;j++) {
+                    if (banque.getClient()[i].getNom().compareTo(banque.getClient()[j].getNom())<0) {
+                        Client temp=banque.getClient()[i];
+                        banque.getClient()[i]=banque.getClient()[j];
+                        banque.getClient()[j]=temp;
+                    }
+                }
+            }
+        }
+        else
+            trierClientsParNom(clavier);
+
+        return banque.getClient();
     }
 
 
 
-    public static void afficherMenuServiceBanque()
-    {
+    public static void afficherMenuServiceBanque() {
         Scanner clavier=new Scanner(System.in);
         System.out.println("\n=============================================");
         System.out.println("Menu Service Banque \n");
@@ -554,6 +705,9 @@ public class Service_Banque {
                 break; 
         }
     }
+
+
+
     public static void main(String[] args) {
         //Scanner clavier=new Scanner(System.in);
         ///////////=>

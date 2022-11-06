@@ -7,8 +7,8 @@ public class Compte {
     private  int idCompte;
     private double solde;
     private LocalDate d_cration;
-    private String[] journalisation = new String[4];
-    private int  j=0;
+    private String[] journalisation = new String[10];
+    public int  j=0;
     private Client client;
 
 
@@ -49,7 +49,12 @@ public class Compte {
 
     public void setSolde(double solde) {
         if(solde>0)
+        {
+            journalisation[j] = "Compte id : " + idCompte + ", le solde a ete modifier de : " + this.solde+" a : "+solde;
+            j++;
             this.solde = solde;
+        }
+
     }
 
     public LocalDate getD_cration() {
@@ -73,7 +78,12 @@ public class Compte {
     }
 
     public void setClient(Client client) {
-        this.client = client;
+        {
+            journalisation[j] = "Compte id : " + idCompte + " est lie au Client : " + client.getIdClient();
+            j++;
+            this.client = client;
+        }
+
     }
 
     @Override

@@ -9,8 +9,9 @@ public class Client {
     private String nom;
     private String prenom;
     private String email;
-    private static String[] journalisation = new String[10];
-    private static int j=0;
+    private LocalDate d_cration;
+    private  String[] journalisation = new String[10];
+    public  int j=0;
     public Compte[] compte = new Compte[4];
     public int nbrcompte=0;
 
@@ -20,6 +21,7 @@ public class Client {
         this.nom = nom;
         this.prenom = prenom;
         boolean valide=false;
+        this.d_cration = LocalDate.now();
         for(int i=0;i<email.length();i++)
         {
             if (email.charAt(i)=='@')
@@ -56,12 +58,12 @@ public class Client {
         this.email = email;
     }
 
-    public static void setJournalisation(String[] journalisation) {
-        Client.journalisation = journalisation;
+    public void setJournalisation(String[] journalisation) {
+        this.journalisation = journalisation;
     }
 
     public void setCompte(Compte[] compte) {
-        this.compte = compte;
+       this.compte = compte;
     }
 
     public int getIdClient() {
@@ -80,7 +82,15 @@ public class Client {
         return email;
     }
 
-    public static String[] getJournalisation() {
+    public LocalDate getD_cration() {
+        return d_cration;
+    }
+
+    public void setD_cration(LocalDate d_cration) {
+        this.d_cration = d_cration;
+    }
+
+    public  String[] getJournalisation() {
         return journalisation;
     }
 
