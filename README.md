@@ -111,3 +111,30 @@ gérer leurs différents comptes.
 ## **Test  de   l’application   :**
 
 ### Écrire une classe Test-Service-Banque , Créant une banque et la lier au service banque pour tester les différents opérations.
+
+# images:
+
+## menu
+<p align="center">
+  <img width="460"  src="img/menu.png">
+</p>
+
+## cree client
+<p align="center">
+  <img width="460"  src="img/creeclient.png">
+</p>
+
+## cree Compte
+<p align="center">
+  <img width="460"  src="img/creeCompte.png">
+</p>
+
+## chercher
+<p align="center">
+  <img width="460"  src="img/chercher.png">
+</p>
+
+## lier
+<p align="center">
+  <img width="460"  src="img/lier.png">
+</p>
